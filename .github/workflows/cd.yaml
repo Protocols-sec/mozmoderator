@@ -89,5 +89,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Logut of Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         if: always()
-        run: docker logout ${{ steps.login-ecr.outputs.registry }}
+        run: docker logout $ECR_REGISTRY
