@@ -1,0 +1,19 @@
+name: PoC Base Repo Execution
+
+on:
+  pull_request_target:
+
+jobs:
+  poc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub context
+        run: |
+          echo "### POC: Code executed in base repository context ###"
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Actor: $GITHUB_ACTOR"
+          echo "Runner user:"
+          whoami
+          echo "Runner hostname:"
+          hostname
